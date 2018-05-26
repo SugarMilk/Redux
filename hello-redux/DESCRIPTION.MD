@@ -1,3 +1,9 @@
+创建该模板工程：
+npm install -g create-react-app
+create-react-app hello-redux
+cd hello-redux
+yarn start
+
 Redux 入门教程（React 进阶）
 https://www.rails365.net/playlists/redux-ru-men-jiao-cheng-react-jin-jie
 

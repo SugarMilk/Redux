@@ -8,6 +8,15 @@ import reducer from './reducers/counter';
 // 创建一个以reducer为规则的状态容器store
 const store = createStore(reducer);
 
+console.log(store);
+/*
+dispatch: ƒ dispatch(action)
+getState: ƒ getState()
+replaceReducer: ƒ replaceReducer(nextReducer)
+subscribe: ƒ subscribe(listener)
+Symbol(observable): ƒ observable()
+*/
+
 const render = function(){
   const component = (<App
     onIncrease={function(){
