@@ -29,6 +29,7 @@ function getUsers(state, action) {
 }
 
 // 创建容器 (调用rule，即先初始化store)
+// store是唯一的 ???
 const store = Redux.createStore(getUsers);
 
 // 添加监听 (store中的state发生改变后，监听接收)
