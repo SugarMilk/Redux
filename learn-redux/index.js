@@ -33,11 +33,19 @@ const store = Redux.createStore(getUsers);
 
 // 添加监听 (store中的state发生改变后，监听接收)
 store.subscribe(function(){
+  console.log('PREV: ', store.getState());
+
   let currentState = store.getState();
   currentState.users.push(4, 5, 6);
+
+  console.log('NEXT: ', store.getState());
 });
 
 // 触发事件
+store.dispatch({
+  type: ActionTypes.ALL
+})
+
 store.dispatch({
   type: ActionTypes.ALL
 })
