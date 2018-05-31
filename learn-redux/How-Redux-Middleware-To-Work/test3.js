@@ -1,12 +1,15 @@
 /**
- * 自己实现一个Redux
+ * @Author: huangjian
+ * @Date: 2018-05-31T10:18:03+08:00
+ * @Desc: [改] 将初始化参数由 state 改成 reducer
  */
 
 const EventEmitter = require('events').EventEmitter
 
-class Store {
-  constructor(state) {
-    this._state = state || {}
+class CreateStore {
+  constructor(reducer) {
+    this._state = reducer()
+    this._reducer = reducer
     this._emitter = new EventEmitter
   }
 
@@ -14,13 +17,9 @@ class Store {
     return this._state
   }
 
-  setReducers(fn){
-    this._reducers = fn
-  }
-
   dispatch(action){
-    if (this._reducers) {
-        this._state = this._reducers(this._state, action)
+    if (this._reducer) {
+        this._state = this._reducer(this._state, action)
     }
     this._emitter.emit('change')
   }
@@ -30,9 +29,7 @@ class Store {
   }
 }
 
-const store = new Store({number: 10})
-
-store.setReducers(function(state, action) {
+function reducer(state = {number: 10}, action = {}) {
   switch (action.type) {
     case 'add':
       return Object.assign({}, state, {
@@ -43,9 +40,11 @@ store.setReducers(function(state, action) {
         number: state.number - 1
       })
     default:
-      return prevState
+      return state
   }
-})
+}
+
+const store = new CreateStore(reducer)
 
 store.subscribe(() => {
   console.log(store.getState());

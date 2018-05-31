@@ -1,13 +1,14 @@
 /**
- * 自己实现一个Redux
+ * @Author: huangjian
+ * @Date: 2018-05-31T10:17:48+08:00
+ * @Desc: 自己实现一个Redux
  */
 
 const EventEmitter = require('events').EventEmitter
 
-class CreateStore {
-  constructor(reducer) {
-    this._state = reducer()
-    this._reducer = reducer
+class Store {
+  constructor(state) {
+    this._state = state || {}
     this._emitter = new EventEmitter
   }
 
@@ -15,9 +16,13 @@ class CreateStore {
     return this._state
   }
 
+  setReducers(fn){
+    this._reducers = fn
+  }
+
   dispatch(action){
-    if (this._reducer) {
-        this._state = this._reducer(this._state, action)
+    if (this._reducers) {
+        this._state = this._reducers(this._state, action)
     }
     this._emitter.emit('change')
   }
@@ -27,7 +32,9 @@ class CreateStore {
   }
 }
 
-function reducer(state = {number: 10}, action = {}) {
+const store = new Store({number: 10})
+
+store.setReducers(function(state, action) {
   switch (action.type) {
     case 'add':
       return Object.assign({}, state, {
@@ -38,11 +45,9 @@ function reducer(state = {number: 10}, action = {}) {
         number: state.number - 1
       })
     default:
-      return state
+      return prevState
   }
-}
-
-const store = new CreateStore(reducer)
+})
 
 store.subscribe(() => {
   console.log(store.getState());

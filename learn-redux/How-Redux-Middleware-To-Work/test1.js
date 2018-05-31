@@ -1,8 +1,7 @@
-
 /**
- * Redux 工作机制原理:
- * state 即状态树
- * handlers 即Reducer
+ * @Author: huangjian
+ * @Date: 2018-05-31T10:17:04+08:00
+ * @Desc: Redux 基本工作原理
  */
 
 let state = {
