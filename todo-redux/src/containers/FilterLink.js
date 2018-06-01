@@ -25,7 +25,7 @@ const mapStateToProps = (state, ownProps) => ({
 /*
 mapDispatchToProps (dispatch, ownProps)
 用于建立组件 props(ownProps) 跟 store.dispatch 的映射关系，返回一个 object。
-它定义 UI 组件如何发出 action，实际上就是要调用 dispatch 这个方法
+它定义 UI 组件如何发出 action，实际上就是调用 dispatch 这个方法
  */
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => dispatch(setVisibilityFilterAction(ownProps.filter))
