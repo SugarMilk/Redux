@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 /**
- TodoList 是 UI VisibleTodoList 就是由React-redux通过connect方法自动生成的容器组件
+ TodoList 是 UI 组件, VisibleTodoList 就是由React-redux通过connect方法自动生成的容器组件
  todos 和 toggleTodoItemAction 将作为属性传递给 TodoList
  */
 export default connect(
