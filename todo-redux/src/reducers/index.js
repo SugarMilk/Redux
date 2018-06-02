@@ -8,6 +8,33 @@ import { combineReducers } from 'redux'
 import todos from './todos'
 import visibilityFilter from './visibilityFilter'
 
+/*
+ 这里的 combineReducers 作用于根 state,
+ 即：
+ let rootReducer = combineReducers(reducerA, reducerB))
+ let store = createStore(rootReducer)
+
+ 但 combineReducers 也可作用于子 state,
+ 如：
+ function reducerB(state, action){
+   switch(action.type) {
+     case 'xxx':
+      return combineReducers(reducerC, reducerD)(state, action)  <==
+     default:
+      return state
+   }
+ }
+ 形如：state
+ {
+   reducerA: ...
+   reducerB:
+     xxx: {
+       reducerC: ...
+       reducerD: ...
+     }
+     ...
+ }
+ */
 export default combineReducers({
   todos,
   visibilityFilter
