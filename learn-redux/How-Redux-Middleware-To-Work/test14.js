@@ -42,6 +42,9 @@ const thunk = store => dispatch => action => {
   }
 }
 
+/**
+ applyMiddleware 参数中的中间件顺序很重要，一般让异步中间件放在前面(可以换下顺序试试)
+ */
 const store = createStore(reducer, applyMiddleware(thunk, logger))
 
 store.subscribe(() => {

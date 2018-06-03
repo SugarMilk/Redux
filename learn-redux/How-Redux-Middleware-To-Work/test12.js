@@ -36,3 +36,12 @@ let actions = bindActionCreators({
 
 actions.changeNameAction('hj')
 actions.changeNameAction('huangjian')
+
+/**
+ bindActionCreators
+ https://blog.csdn.net/juzipchy/article/details/77659019
+ https://blog.csdn.net/liwusen/article/details/54138854
+ https://www.2cto.com/kf/201805/744222.html
+ https://segmentfault.com/a/1190000011883586
+
+ */
